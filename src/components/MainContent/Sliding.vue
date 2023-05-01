@@ -9,7 +9,7 @@
                 <div>
                     <input type="password" placeholder="密码" class="init-input untize-input underline">
                 </div>
-                <input type="submit" value="登录" class="init-input untize-input login-button round-corner">
+                <input type="submit" value="登录" class="init-input untize-input login-button round-corner" >
             </div>
             <div class="right-signup vertical-center" v-show="!this.sw">
                 <h1>signup</h1>
@@ -17,13 +17,13 @@
                     <input type="text" placeholder="用户名" class="init-input untize-input underline">
                 </div>
                 <div>
-                    <input type="password" placeholder="邮箱" class="init-input untize-input underline">
+                    <input type="text" placeholder="邮箱" class="init-input untize-input underline" >
                 </div>
                 <div>
-                    <input type="password" placeholder="电话" class="init-input untize-input underline">
+                    <input type="text" placeholder="电话" class="init-input untize-input underline" >
                 </div>
                 <div>
-                    <input type="password" placeholder="密码" class="init-input untize-input underline">
+                    <input type="password" placeholder="密码" class="init-input untize-input underline" >
                 </div>
                 <div>
                     <input type="password" placeholder="确认密码" class="init-input untize-input underline">
@@ -37,17 +37,32 @@
 <script>
 export default {
     props: ["sw"],
+    // 实现滑动效果
     updated() {
         let slide = this.$refs.slide;
         this.sw
             ? slide.style.transform = 'translateX(0)'
             : slide.style.transform = "translateX(80%)";
         slide.style.transition = "transform 0.5s ease-in-out"
+    },
+    mounted() {
+        // 登录注册界面颜色调整
+        let input = document.querySelectorAll(".underline");
+        input.forEach(e => {
+            e.addEventListener("blur", () => {
+                e.style.color = "#FF6666";
+            });
+            e.addEventListener("focus", () => {
+                e.style.color = "red";
+            });
+        })
+
+        
     }
 }
 </script>
 
-<style >
+<style scoped>
 form {
     height: 100%;
 }
@@ -66,7 +81,6 @@ input::placeholder {
 }
 input:focus {
     border-bottom: 1px solid red !important;
-    color: red;
 }
 input:focus::placeholder {
     color: red;

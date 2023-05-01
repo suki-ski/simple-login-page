@@ -19,14 +19,17 @@ input {
     letter-spacing: 2px;
 }
 
+/* 圆角效果 */
 .round-corner {
   border-radius: 6px;
 }
+/* 垂直居中 */
 .vertical-center {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
+/* 初始化input */
 .init-input {
   display: block;
   padding: 0;
@@ -34,6 +37,18 @@ input {
   outline: none;
   border: none;
   background-color: transparent;
+}
+/* 旋转图片的动画效果 */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.rotate {
+  animation: rotate 10s linear infinite;
 }
 
 .box {
